@@ -1,9 +1,0 @@
-2024-04-16 20:14:49,475 fflow.py init [line:635] INFO PROCESS ID:	21060
-2024-04-16 20:14:49,475 fflow.py init [line:636] INFO Initializing devices: cuda:0 will be used for this running.
-2024-04-16 20:14:49,475 fflow.py init [line:639] INFO BENCHMARK:	svhn_classification
-2024-04-16 20:14:49,475 fflow.py init [line:640] INFO TASK:			./svhn_DP_seq
-2024-04-16 20:14:49,475 fflow.py init [line:641] INFO MODEL:		svhn_classification.model.default_model
-2024-04-16 20:14:49,475 fflow.py init [line:642] INFO ALGORITHM:	PPFL_DP
-2024-04-16 20:14:49,492 fflow.py init [line:681] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
-2024-04-16 20:14:49,500 fflow.py init [line:698] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
-2024-04-16 20:14:49,500 fflow.py init [line:711] INFO Ready to start.

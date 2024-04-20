@@ -46,7 +46,7 @@ def calculate_sensitivity(lr, clip, dataset_size):
     return 2 * lr * clip / dataset_size
 
 
-def custom_clip_grad_norm_(parameters, max_norm, norm_type=2):
+def custom_clip_grad_norm_(parameters, max_norm, norm_type):
     """
     Clips gradient norm of an iterable of parameters.
     The norm is computed over all gradients together, as if they were
@@ -123,13 +123,9 @@ def decrypt_model(encrypted_model: list, private_key):
 
 class Server(fedbase.BasicServer):
     def initialize(self, *args, **kwargs):
-        self.init_algo_para({'epsilon': 10})
-        # self.init_algo_para({'epsilon': 10,''})
+        self.init_algo_para({'epsilon': 10, 'Add_DP': 1})
         self.gv.public_key, self.gv.private_key = paillier.generate_paillier_keypair(n_length=128)
         self.tensors = _model_to_tensor(self.model)
-        # print(self.tensors)
-        # tmp = _model_from_tensor_with_grad(self.tensors.to('cuda'), self.model)
-        # print(self.model, '\n', tmp, (self.model == tmp))
         self.encrypted_tensors = encrypt_vector(self.gv.public_key, self.tensors)
 
     def aggregate(self, encrypted_models: list, *args, **kwargs):
@@ -163,8 +159,6 @@ class Server(fedbase.BasicServer):
 
     def iterate(self):
         self.selected_clients = self.sample()
-        self.sensitivity = cal_sensitivity_part(self.learning_rate, len(self.selected_clients))
-        print("\n before communicate sensitivity `````````````````:", self.sensitivity)
         en_grads = self.communicate(self.selected_clients)['encrypted_model']
         self.aggregate(en_grads)
 
@@ -172,7 +166,6 @@ class Server(fedbase.BasicServer):
         return {
             'model': copy.deepcopy(self.model),
             'encrypted_tensors': self.encrypted_tensors,
-            'sensitivity': self.sensitivity
         }
 
     def sample(self):
@@ -250,24 +243,29 @@ class Client(fedbase.BasicClient):
         model = received_pkg['model']
         decrypt_tensors = decrypt_model(encrypted_tensors, self.gv.private_key)
         dec_model = _model_from_tensor_with_grad(decrypt_tensors.to('cuda'), model)
-        sensitivity = received_pkg['sensitivity']
-        print('客户端所接收到的全局敏感度', sensitivity)
         print('裁剪所需', self.clip_grad)
-        local_sensitivity = cal_sensitivity(sensitivity, self.clip_grad)
-        print('接收到全局敏感度后计算的局部敏感度', local_sensitivity)
+        sensitivity = calculate_sensitivity(self.learning_rate, self.clip_grad, len(self.train_data))
+        print('接收到全局敏感度后计算的局部敏感度', sensitivity)
+        print(self.num_epochs, self.num_steps)
+        epsilon = self.epsilon / self.num_steps
+        print('接收到全局敏感度后计算的局部敏感度', sensitivity)
         print('客户端unpack完毕！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！')
         print('客户端解密得到的全局模型张量', decrypt_tensors)
         print('---------------------------------------------------------------------------')
-        return dec_model, sensitivity
+        return dec_model, sensitivity, epsilon
 
     def reply(self, svr_pkg):
-        model, sensitivity = self.unpack(svr_pkg)
-        disturbed = self.train(model, sensitivity)
+        model, sensitivity, epsilon = self.unpack(svr_pkg)
+        disturbed = self.train(model, sensitivity, epsilon)
         cpkg = self.pack(disturbed)
         return cpkg
 
     @fmodule.with_multi_gpus
-    def train(self, global_model, sensitivity):
+    def train(self, global_model, sensitivity, epsilon):
+        if self.Add_DP == 1:
+            norm_type = 1
+        else:
+            norm_type = 2
         global_model.train()
         optimizer = self.calculator.get_optimizer(global_model, lr=self.learning_rate, weight_decay=self.weight_decay,
                                                   momentum=self.momentum)
@@ -279,15 +277,16 @@ class Client(fedbase.BasicClient):
             # 裁剪梯度
             if self.clip_grad > 0:
                 # torch.nn.utils.clip_grad_norm_(parameters=global_model.parameters(), max_norm=self.clip_grad)
-                custom_clip_grad_norm_(global_model.parameters(), self.clip_grad)
+                custom_clip_grad_norm_(global_model.parameters(), self.clip_grad, norm_type=norm_type)
             optimizer.step()
 
         print('客户端在本地训练进行加噪前、裁剪后的模型参数转张量', _model_to_tensor(global_model))
         print('敏感度······························································', sensitivity)
-        print('Laplace 参数························································', sensitivity / self.epsilon)
+        print('本地隐私预算·························································', epsilon)
+        print('Laplace 参数························································', sensitivity / epsilon)
         # Add Laplace noise for differential privacy
         for param in global_model.parameters():
-            new_param_data = add_noise(param.data, sensitivity / self.epsilon, 1, device='cuda')
+            new_param_data = add_noise(param.data, sensitivity / epsilon, self.Add_DP, device='cuda')
             param.data = new_param_data
 
         disturbed = global_model.to(torch.device('cuda'))
