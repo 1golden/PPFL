@@ -23,31 +23,31 @@ flgo.gen_task(task_config, task)  # 生成任务
 option = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
           'save_checkpoint': 0, 'load_checkpoint': 0, 'log_file': True, 'log_level': 'DEBUG'}
 option_1 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 1, 'load_checkpoint': 1, 'algo_para': [10], 'clip_grad': 50, 'sample': 'sequential',
+            'save_checkpoint': 1, 'load_checkpoint': 1, 'algo_para': [1, 1], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_2 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 2, 'load_checkpoint': 2, 'algo_para': [20], 'clip_grad': 50, 'sample': 'sequential',
+            'save_checkpoint': 2, 'load_checkpoint': 2, 'algo_para': [2, 1], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_3 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 3, 'load_checkpoint': 3, 'algo_para': [30], 'clip_grad': 50, 'sample': 'sequential',
+            'save_checkpoint': 3, 'load_checkpoint': 3, 'algo_para': [3, 1], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_4 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 4, 'load_checkpoint': 4, 'algo_para': [40], 'clip_grad': 50, 'sample': 'sequential',
+            'save_checkpoint': 4, 'load_checkpoint': 4, 'algo_para': [4, 1], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_5 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 5, 'load_checkpoint': 5, 'algo_para': [50], 'clip_grad': 50, 'sample': 'sequential',
+            'save_checkpoint': 5, 'load_checkpoint': 5, 'algo_para': [5, 1], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_6 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 6, 'load_checkpoint': 6, 'algo_para': [75], 'clip_grad': 50, 'sample': 'sequential',
+            'save_checkpoint': 6, 'load_checkpoint': 6, 'algo_para': [7, 1], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_7 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 7, 'load_checkpoint': 7, 'algo_para': [100], 'clip_grad': 50, 'sample': 'sequential',
+            'save_checkpoint': 7, 'load_checkpoint': 7, 'algo_para': [10, 1], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_8 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 8, 'load_checkpoint': 8, 'algo_para': [10], 'clip_grad': 30, 'sample': 'sequential',
+            'save_checkpoint': 8, 'load_checkpoint': 8, 'algo_para': [5, 1], 'clip_grad': 3, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 option_9 = {'gpu': [0, 1], 'num_rounds': 15, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 9, 'load_checkpoint': 9, 'algo_para': [10], 'clip_grad': 20, 'sample': 'sequential',
+            'save_checkpoint': 9, 'load_checkpoint': 9, 'algo_para': [5, 1], 'clip_grad': 2, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG', 'pin_memory': True, 'num_workers': 8}
 
 fedavg_runner = flgo.init(task, fedavg, option=option)
