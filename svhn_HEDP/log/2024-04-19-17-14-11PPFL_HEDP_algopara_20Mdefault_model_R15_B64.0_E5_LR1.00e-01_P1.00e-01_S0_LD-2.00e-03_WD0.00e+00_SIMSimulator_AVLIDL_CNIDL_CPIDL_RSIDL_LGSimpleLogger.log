@@ -1,0 +1,12 @@
+2024-04-19 17:14:11,271 fflow.py init [line:642] INFO PROCESS ID:	5868
+2024-04-19 17:14:11,287 fflow.py init [line:643] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-19 17:14:11,287 fflow.py init [line:646] INFO BENCHMARK:	test_svhn.svhn_classification
+2024-04-19 17:14:11,287 fflow.py init [line:647] INFO TASK:			./svhn_HEDP
+2024-04-19 17:14:11,295 fflow.py init [line:648] INFO MODEL:		test_svhn.svhn_classification.model.default_model
+2024-04-19 17:14:11,295 fflow.py init [line:649] INFO ALGORITHM:	PPFL_HEDP
+2024-04-19 17:14:11,303 fflow.py init [line:688] INFO SCENE:		horizontal FL with 1 <class 'HEDP.Server'>, 100 <class 'HEDP.Client'>
+2024-04-19 17:14:11,602 fflow.py init [line:705] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-19 17:14:56,409 fflow.py init [line:718] INFO Ready to start.
+2024-04-19 17:18:46,286 fedbase.py _load_checkpoint [line:708] INFO Loading checkpoint PPFL_HEDP_epsilon20_Mdefault_model_R15_B64.0_E5_LR1.00e-01_P1.00e-01_S0_LD-2.00e-03_WD0.00e+00_SIMSimulator_AVLIDL_CNIDL_CPIDL_RSIDL_LGSimpleLogger at round 15...
+2024-04-19 17:18:46,301 fedbase.py run [line:265] INFO =================End==================
+2024-04-19 17:18:46,301 fedbase.py run [line:266] INFO Total Time Cost:              0.0156s

@@ -1,0 +1,12 @@
+2024-04-16 20:17:47,474 fflow.py init [line:635] INFO PROCESS ID:	21236
+2024-04-16 20:17:47,478 fflow.py init [line:636] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-16 20:17:47,478 fflow.py init [line:639] INFO BENCHMARK:	svhn_classification
+2024-04-16 20:17:47,478 fflow.py init [line:640] INFO TASK:			./svhn_DP_seq
+2024-04-16 20:17:47,478 fflow.py init [line:641] INFO MODEL:		svhn_classification.model.default_model
+2024-04-16 20:17:47,478 fflow.py init [line:642] INFO ALGORITHM:	PPFL_DP
+2024-04-16 20:17:47,490 fflow.py init [line:681] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-16 20:17:47,498 fflow.py init [line:698] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-16 20:17:47,498 fflow.py init [line:711] INFO Ready to start.
+2024-04-16 20:17:47,574 fedbase.py _load_checkpoint [line:714] INFO Loading checkpoint PPFL_DP_epsilon100_Mdefault_model_R20_B64.0_E5_LR1.00e-01_P1.00e-01_S0_LD-2.00e-03_WD0.00e+00_SIMSimulator_AVLIDL_CNIDL_CPIDL_RSIDL_LGSimpleLogger at round 20...
+2024-04-16 20:17:47,587 fedbase.py run [line:263] INFO =================End==================
+2024-04-16 20:17:47,587 fedbase.py run [line:264] INFO Total Time Cost:              0.0127s

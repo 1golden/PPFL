@@ -1,0 +1,7 @@
+2024-04-18 12:07:01,267 fflow.py init [line:635] INFO PROCESS ID:	10632
+2024-04-18 12:07:01,267 fflow.py init [line:636] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-18 12:07:01,267 fflow.py init [line:639] INFO BENCHMARK:	test_svhn.svhn_classification
+2024-04-18 12:07:01,267 fflow.py init [line:640] INFO TASK:			./svhn_HEDP
+2024-04-18 12:07:01,267 fflow.py init [line:641] INFO MODEL:		test_svhn.svhn_classification.model.default_model
+2024-04-18 12:07:01,267 fflow.py init [line:642] INFO ALGORITHM:	fedavg
+2024-04-18 12:07:01,282 fflow.py init [line:681] INFO SCENE:		horizontal FL with 1 <class 'flgo.algorithm.fedbase.BasicServer'>, 100 <class 'flgo.algorithm.fedbase.BasicClient'>
