@@ -1,0 +1,32 @@
+2024-04-20 21:55:59,357 fflow.py init [line:691] INFO PROCESS ID:	6912
+2024-04-20 21:55:59,357 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-20 21:55:59,357 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-20 21:55:59,357 fflow.py init [line:696] INFO TASK:			./svhn_DP_Gaussian
+2024-04-20 21:55:59,357 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-20 21:55:59,357 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-20 21:55:59,369 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP_Gaussian.Server'>, 100 <class 'DP_Gaussian.Client'>
+2024-04-20 21:56:01,450 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-20 21:56:01,450 fflow.py init [line:767] INFO Ready to start.
+2024-04-20 21:56:01,728 fedbase.py _load_checkpoint [line:708] INFO Loading checkpoint PPFL_DP_epsilon1_Add_DP2_Mdefault_model_R20_B64.0_E5_LR1.00e-01_P1.00e-01_S0_LD-2.00e-03_WD0.00e+00_SIMSimulator_AVLIDL_CNIDL_CPIDL_RSIDL_LGSimpleLogger at round 4...
+2024-04-20 21:56:19,015 fedbase.py run [line:253] INFO --------------Round 5--------------
+2024-04-20 21:56:19,015 simple_logger.py log_once [line:14] INFO Current_time:5
+2024-04-20 21:56:28,330 simple_logger.py log_once [line:28] INFO test_accuracy                 0.6936
+2024-04-20 21:56:28,334 simple_logger.py log_once [line:28] INFO test_loss                     1.0168
+2024-04-20 21:56:28,334 simple_logger.py log_once [line:28] INFO val_accuracy                  0.6903
+2024-04-20 21:56:28,334 simple_logger.py log_once [line:28] INFO mean_val_accuracy             0.6903
+2024-04-20 21:56:28,334 simple_logger.py log_once [line:28] INFO std_val_accuracy              0.0543
+2024-04-20 21:56:28,334 simple_logger.py log_once [line:28] INFO val_loss                      0.9941
+2024-04-20 21:56:28,334 simple_logger.py log_once [line:28] INFO mean_val_loss                 0.9941
+2024-04-20 21:56:28,334 simple_logger.py log_once [line:28] INFO std_val_loss                  0.1549
+2024-04-20 21:56:28,334 fedbase.py run [line:258] INFO Eval Time Cost:               9.3191s
+2024-04-20 21:56:44,435 fedbase.py run [line:253] INFO --------------Round 6--------------
+2024-04-20 21:56:44,439 simple_logger.py log_once [line:14] INFO Current_time:6
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO test_accuracy                 0.7430
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO test_loss                     0.9374
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO val_accuracy                  0.7499
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO mean_val_accuracy             0.7499
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO std_val_accuracy              0.0570
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO val_loss                      0.8801
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO mean_val_loss                 0.8801
+2024-04-20 21:56:53,956 simple_logger.py log_once [line:28] INFO std_val_loss                  0.1759
+2024-04-20 21:56:53,956 fedbase.py run [line:258] INFO Eval Time Cost:               9.5168s

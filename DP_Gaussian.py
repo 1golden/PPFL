@@ -40,12 +40,11 @@ def _model_to_tensor(m):
     return torch.cat([mi.data.view(-1) for mi in m.parameters()])
 
 
-def cal_sensitivity(lr,clip, dataset_size):
+def cal_sensitivity(lr, clip, dataset_size):
     return 2 * lr * clip / dataset_size
 
 
-
-def custom_clip_grad_norm_(parameters, max_norm, norm_type=2):
+def custom_clip_grad_norm_(parameters, max_norm, norm_type):
     """
     Clips gradient norm of an iterable of parameters.
     The norm is computed over all gradients together, as if they were
@@ -55,6 +54,7 @@ def custom_clip_grad_norm_(parameters, max_norm, norm_type=2):
     :param max_norm: (float or int): 最大范数值
     :param norm_type: (float or int): 范数类型，默认为2范数
     """
+
     total_norm = 0.0
     for p in parameters:
         param_norm = p.data.norm(norm_type)
@@ -82,10 +82,9 @@ def add_noise(parameters, sigma, dp, device):
 
 class Server(fedbase.BasicServer):
     def initialize(self, *args, **kwargs):
-        self.init_algo_para({'epsilon': 10, 'Add_DP': 0})
+        self.init_algo_para({'epsilon': 10, 'Add_DP': 2})
         # self.init_algo_para({'epsilon': 10})
         # self.sensitivity = cal_sensitivity_part(self.learning_rate, len(self.clients))
-        
 
     def iterate(self):
         self.selected_clients = self.sample()
@@ -165,21 +164,27 @@ class Server(fedbase.BasicServer):
 class Client(fedbase.BasicClient):
     def unpack(self, received_pkg):
         model = received_pkg['model']
-        print('客户端端数据集长度--------------------------------------------------------',len(self.train_data))
+        print('客户端端数据集长度--------------------------------------------------------', len(self.train_data))
         print('裁剪所需', self.clip_grad)
-        local_sensitivity = cal_sensitivity( self.learning_rate, self.clip_grad,len(self.train_data))
+        local_sensitivity = cal_sensitivity(self.learning_rate, self.clip_grad, len(self.train_data))
         print('接收到全局敏感度后计算的局部敏感度', local_sensitivity)
-        return model, local_sensitivity
+        print(self.num_epochs, self.num_steps)
+        epsilon = self.epsilon / self.num_steps
+        return model, local_sensitivity, epsilon
 
     def reply(self, svr_pkg):
-        model, sensitivity = self.unpack(svr_pkg)
-        disturbed = self.train(model, sensitivity)
+        model, sensitivity, epsilon = self.unpack(svr_pkg)
+        disturbed = self.train(model, sensitivity, epsilon)
         cpkg = self.pack(disturbed)
         return cpkg
 
     @fmodule.with_multi_gpus
-    def train(self, global_model, sensitivity):
+    def train(self, global_model, sensitivity, epsilon):
         print('客户端在本地训练所用的全局模型', _model_to_tensor(global_model))
+        if self.Add_DP == 1:
+            norm_type = 1
+        else:
+            norm_type = 2
         global_model.train()
         optimizer = self.calculator.get_optimizer(global_model, lr=self.learning_rate, weight_decay=self.weight_decay,
                                                   momentum=self.momentum)
@@ -191,18 +196,19 @@ class Client(fedbase.BasicClient):
             # 裁剪梯度
             if self.clip_grad > 0:
                 # torch.nn.utils.clip_grad_norm_(parameters=global_model.parameters(), max_norm=self.clip, norm_type=2)
-                custom_clip_grad_norm_(global_model.parameters(), self.clip_grad)
+                custom_clip_grad_norm_(global_model.parameters(), self.clip_grad, norm_type=norm_type)
             optimizer.step()
 
         print('客户端在本地训练进行加噪前、裁剪后的模型', _model_to_tensor(global_model))
         print('敏感度······························································', sensitivity)
-        print('Laplace 参数························································', sensitivity / self.epsilon)
+        print('本地隐私预算·························································', epsilon)
+        print('Laplace 参数························································', sensitivity / epsilon)
         # print('噪声类型-------------------------------------------------------------', self.Add_DP)
         # Add Laplace noise for differential privacy
         # if self.Add_DP > 0:
         for param in global_model.parameters():
             # new_param_data = add_noise(param.data, sensitivity / self.epsilon, self.Add_DP, device='cuda')
-            new_param_data = add_noise(param.data, sensitivity / self.epsilon, self.Add_DP, device='cuda')
+            new_param_data = add_noise(param.data, sensitivity / epsilon, self.Add_DP, device='cuda')
             param.data = new_param_data
 
         disturbed = global_model.to(torch.device('cuda'))

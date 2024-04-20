@@ -42,12 +42,8 @@ def _model_to_tensor(m):
     return torch.cat([mi.data.view(-1) for mi in m.parameters()])
 
 
-def cal_sensitivity_part(lr, dataset_size):
-    return 2 * lr / dataset_size
-
-
-def cal_sensitivity(aim, clip):
-    return aim * clip
+def calculate_sensitivity(lr, clip, dataset_size):
+    return 2 * lr * clip / dataset_size
 
 
 def custom_clip_grad_norm_(parameters, max_norm, norm_type=2):
@@ -129,7 +125,6 @@ class Server(fedbase.BasicServer):
     def initialize(self, *args, **kwargs):
         self.init_algo_para({'epsilon': 10})
         # self.init_algo_para({'epsilon': 10,''})
-        self.sensitivity = cal_sensitivity_part(self.learning_rate, len(self.clients))
         self.gv.public_key, self.gv.private_key = paillier.generate_paillier_keypair(n_length=128)
         self.tensors = _model_to_tensor(self.model)
         # print(self.tensors)

@@ -1,0 +1,9 @@
+2024-04-20 21:53:11,980 fflow.py init [line:691] INFO PROCESS ID:	23632
+2024-04-20 21:53:11,980 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-20 21:53:11,980 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-20 21:53:11,980 fflow.py init [line:696] INFO TASK:			./svhn_DP_Gaussian
+2024-04-20 21:53:11,980 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-20 21:53:11,980 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-20 21:53:12,010 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP_Gaussian.Server'>, 100 <class 'DP_Gaussian.Client'>
+2024-04-20 21:53:12,018 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-20 21:53:12,023 fflow.py init [line:767] INFO Ready to start.

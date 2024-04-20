@@ -25,28 +25,25 @@ flgo.gen_task(task_config, task)  # 生成任务
 option = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
           'save_checkpoint': 0, 'load_checkpoint': 0, 'log_file': True, 'log_level': 'DEBUG'}
 option_1 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 1, 'load_checkpoint': 1, 'algo_para': [1, 2], 'clip_grad': 5,
+            'save_checkpoint': 1, 'load_checkpoint': 1, 'algo_para': [1, 2], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG'}
 option_2 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 2, 'load_checkpoint': 2, 'algo_para': [2, 2], 'clip_grad': 5,
+            'save_checkpoint': 2, 'load_checkpoint': 2, 'algo_para': [2, 2], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG'}
 option_3 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 3, 'load_checkpoint': 3, 'algo_para': [3, 2], 'clip_grad': 5,
+            'save_checkpoint': 3, 'load_checkpoint': 3, 'algo_para': [3, 2], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG'}
 option_4 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 4, 'load_checkpoint': 4, 'algo_para': [4, 2], 'clip_grad': 5,
+            'save_checkpoint': 4, 'load_checkpoint': 4, 'algo_para': [4, 2], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG'}
 option_5 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 5, 'load_checkpoint': 5, 'algo_para': [5, 2], 'clip_grad': 5,
+            'save_checkpoint': 5, 'load_checkpoint': 5, 'algo_para': [5, 2], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG'}
 option_6 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 6, 'load_checkpoint': 6, 'algo_para': [7, 2], 'clip_grad': 5,
+            'save_checkpoint': 6, 'load_checkpoint': 6, 'algo_para': [7, 2], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG'}
 option_7 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 7, 'load_checkpoint': 7, 'algo_para': [100, 2], 'clip_grad': 5,
-            'log_file': True, 'log_level': 'DEBUG'}
-option_8 = {'gpu': 0, 'num_rounds': 20, 'proportion': 0.1, 'batch_size': 64, 'learning_rate': 0.1,
-            'save_checkpoint': 8, 'load_checkpoint': 8, 'algo_para': [50, 2, 50],
+            'save_checkpoint': 7, 'load_checkpoint': 7, 'algo_para': [10, 2], 'clip_grad': 5, 'sample': 'sequential',
             'log_file': True, 'log_level': 'DEBUG'}
 
 # fedavg_runner = flgo.init(task, fedavg, option=option)
