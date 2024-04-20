@@ -40,15 +40,12 @@ def _model_to_tensor(m):
     return torch.cat([mi.data.view(-1) for mi in m.parameters()])
 
 
-def cal_sensitivity_part(lr, dataset_size):
-    return 2 * lr / dataset_size
+def cal_sensitivity(lr,clip, dataset_size):
+    return 2 * lr * clip / dataset_size
 
 
-def cal_sensitivity(aim, clip):
-    return aim * clip
 
-
-def custom_clip_grad_norm_(parameters, max_norm, norm_type=2):
+def custom_clip_grad_norm_(parameters, max_norm, norm_type=1):
     """
     Clips gradient norm of an iterable of parameters.
     The norm is computed over all gradients together, as if they were
@@ -85,22 +82,19 @@ def add_noise(parameters, sigma, dp, device):
 
 class Server(fedbase.BasicServer):
     def initialize(self, *args, **kwargs):
-        # self.init_algo_para({'epsilon': 10, 'Add_DP': 0})
-        self.init_algo_para({'epsilon': 10})
-        self.sensitivity = cal_sensitivity_part(self.learning_rate, len(self.clients))
-        print("when initialize sensitivity `````````````````:", self.sensitivity)
+        self.init_algo_para({'epsilon': 10, 'Add_DP': 1})
+        # self.init_algo_para({'epsilon': 10})
+        # self.sensitivity = cal_sensitivity_part(self.learning_rate, len(self.clients))
+        
 
     def iterate(self):
         self.selected_clients = self.sample()
-        self.sensitivity = cal_sensitivity_part(self.learning_rate, len(self.selected_clients))
-        print("\n before communicate sensitivity `````````````````:", self.sensitivity)
         en_grads = self.communicate(self.selected_clients)['model']
         self.model = self.aggregate(en_grads)
 
     def pack(self, *args, **kwargs):
         return {
-            'model': copy.deepcopy(self.model),
-            'sensitivity': self.sensitivity
+            'model': copy.deepcopy(self.model)
         }
 
     def sample(self):
@@ -171,10 +165,9 @@ class Server(fedbase.BasicServer):
 class Client(fedbase.BasicClient):
     def unpack(self, received_pkg):
         model = received_pkg['model']
-        sensitivity = received_pkg['sensitivity']
-        print('客户端所接收到的全局敏感度', sensitivity)
+        print('客户端端数据集长度--------------------------------------------------------',len(self.train_data))
         print('裁剪所需', self.clip_grad)
-        local_sensitivity = cal_sensitivity(sensitivity, self.clip_grad)
+        local_sensitivity = cal_sensitivity( self.learning_rate, self.clip_grad,len(self.train_data))
         print('接收到全局敏感度后计算的局部敏感度', local_sensitivity)
         return model, local_sensitivity
 
@@ -209,7 +202,7 @@ class Client(fedbase.BasicClient):
         # if self.Add_DP > 0:
         for param in global_model.parameters():
             # new_param_data = add_noise(param.data, sensitivity / self.epsilon, self.Add_DP, device='cuda')
-            new_param_data = add_noise(param.data, sensitivity / self.epsilon, 1, device='cuda')
+            new_param_data = add_noise(param.data, sensitivity / self.epsilon, self.Add_DP, device='cuda')
             param.data = new_param_data
 
         disturbed = global_model.to(torch.device('cuda'))
