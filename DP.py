@@ -82,7 +82,7 @@ def add_noise(parameters, sigma, dp, device):
 
 class Server(fedbase.BasicServer):
     def initialize(self, *args, **kwargs):
-        self.init_algo_para({'epsilon': 10, 'Add_DP': 1})
+        self.init_algo_para({'epsilon': 10, 'Add_DP': 1,'clip':5})
         # self.init_algo_para({'epsilon': 10})
         # self.sensitivity = cal_sensitivity_part(self.learning_rate, len(self.clients))
 
@@ -165,7 +165,7 @@ class Client(fedbase.BasicClient):
     def unpack(self, received_pkg):
         model = received_pkg['model']
         print('客户端端数据集长度--------------------------------------------------------', len(self.train_data))
-        print('裁剪所需', self.clip_grad)
+        print('裁剪所需', self.clip)
         local_sensitivity = cal_sensitivity(self.learning_rate, self.clip_grad, len(self.train_data))
         print('接收到全局敏感度后计算的局部敏感度', local_sensitivity)
         print(self.num_epochs, self.num_steps)
@@ -194,9 +194,9 @@ class Client(fedbase.BasicClient):
             loss = self.calculator.compute_loss(global_model, batch_data)['loss']
             loss.backward()
             # 裁剪梯度
-            if self.clip_grad > 0:
+            if self.clip > 0:
                 # torch.nn.utils.clip_grad_norm_(parameters=global_model.parameters(), max_norm=self.clip, norm_type=2)
-                custom_clip_grad_norm_(global_model.parameters(), self.clip_grad, norm_type=norm_type)
+                custom_clip_grad_norm_(global_model.parameters(), self.clip, norm_type=norm_type)
             optimizer.step()
 
         print('客户端在本地训练进行加噪前、裁剪后的模型', _model_to_tensor(global_model))

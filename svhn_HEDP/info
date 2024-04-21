@@ -1,1 +1,0 @@
-{"benchmark":"test_svhn.svhn_classification","scene":"unknown","num_clients":100,"partitioner":"iid"}

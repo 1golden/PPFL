@@ -74,13 +74,21 @@ analysis_plan = {
     'Painter': {
         'Curve': [
             {'args': {'x': 'communication_round', 'y': 'test_loss'},
-             'fig_option': {'title': 'test loss on Synthetic'}},
+             'obj_option': {#'color': ['r', 'g', 'b', 'y', 'k','m','c','g'],
+                            'marker':['o','<','>','^','v','*','x','.']},
+             'fig_option': {'xlabel': 'communication round', 'ylabel': 'test_accuracy','title': 'test loss on Synthetic'}},
             {'args': {'x': 'communication_round', 'y': 'test_accuracy'},
-             'fig_option': {'title': 'test accuracy on Synthetic'}},
+             'obj_option': {#'color': ['r', 'g', 'b', 'y', 'k','m','c','g'],
+                            'marker':['o','<','>','^','v','*','x','.']},
+             'fig_option': {'xlabel': 'communication round', 'ylabel': 'test_accuracy','title': 'test accuracy on Synthetic'}},
             {'args': {'x': 'communication_round', 'y': 'val_accuracy'},
-             'fig_option': {'title': 'valid accuracy on Synthetic'}},
+             'obj_option': {#'color': ['r', 'g', 'b', 'y', 'k','m','c','g'],
+                            'marker':['o','<','>','^','v','*','x','.']},
+             'fig_option': {'xlabel': 'communication round', 'ylabel': 'test_accuracy','title': 'valid accuracy on Synthetic'}},
             {'args': {'x': 'communication_round', 'y': 'val_loss'},
-             'fig_option': {'title': 'valid loss  on Synthetic'}},
+             'obj_option': {#'color': ['r', 'g', 'b', 'y', 'k','m','c','g'],
+                            'marker':['o','<','>','^','v','*','x','.']},
+             'fig_option': {'xlabel': 'communication round', 'ylabel': 'test_accuracy','title': 'valid loss  on Synthetic'}},
         ]
     }
 }

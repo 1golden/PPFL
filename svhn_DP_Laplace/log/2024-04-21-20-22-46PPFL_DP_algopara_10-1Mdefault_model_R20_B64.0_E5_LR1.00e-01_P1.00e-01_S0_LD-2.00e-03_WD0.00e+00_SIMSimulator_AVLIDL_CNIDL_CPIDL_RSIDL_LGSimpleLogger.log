@@ -1,0 +1,54 @@
+2024-04-21 20:22:46,085 fflow.py init [line:691] INFO PROCESS ID:	21908
+2024-04-21 20:22:46,085 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:22:46,086 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:22:46,086 fflow.py init [line:696] INFO TASK:			./svhn_DP_Laplace
+2024-04-21 20:22:46,086 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:22:46,089 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:22:46,103 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-21 20:22:46,111 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:22:46,112 fflow.py init [line:767] INFO Ready to start.
+2024-04-21 20:22:46,116 fflow.py init [line:691] INFO PROCESS ID:	21908
+2024-04-21 20:22:46,117 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:22:46,117 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:22:46,117 fflow.py init [line:696] INFO TASK:			./svhn_DP_Laplace
+2024-04-21 20:22:46,118 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:22:46,118 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:22:46,130 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-21 20:22:46,136 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:22:46,138 fflow.py init [line:767] INFO Ready to start.
+2024-04-21 20:22:46,141 fflow.py init [line:691] INFO PROCESS ID:	21908
+2024-04-21 20:22:46,141 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:22:46,142 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:22:46,142 fflow.py init [line:696] INFO TASK:			./svhn_DP_Laplace
+2024-04-21 20:22:46,142 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:22:46,143 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:22:46,216 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-21 20:22:46,223 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:22:46,224 fflow.py init [line:767] INFO Ready to start.
+2024-04-21 20:22:46,229 fflow.py init [line:691] INFO PROCESS ID:	21908
+2024-04-21 20:22:46,229 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:22:46,229 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:22:46,230 fflow.py init [line:696] INFO TASK:			./svhn_DP_Laplace
+2024-04-21 20:22:46,230 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:22:46,230 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:22:46,245 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-21 20:22:46,252 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:22:46,253 fflow.py init [line:767] INFO Ready to start.
+2024-04-21 20:22:46,258 fflow.py init [line:691] INFO PROCESS ID:	21908
+2024-04-21 20:22:46,258 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:22:46,258 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:22:46,259 fflow.py init [line:696] INFO TASK:			./svhn_DP_Laplace
+2024-04-21 20:22:46,259 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:22:46,259 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:22:46,275 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-21 20:22:46,281 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:22:46,282 fflow.py init [line:767] INFO Ready to start.
+2024-04-21 20:22:46,286 fflow.py init [line:691] INFO PROCESS ID:	21908
+2024-04-21 20:22:46,287 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:22:46,287 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:22:46,287 fflow.py init [line:696] INFO TASK:			./svhn_DP_Laplace
+2024-04-21 20:22:46,287 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:22:46,288 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:22:46,300 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-21 20:22:46,306 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:22:46,307 fflow.py init [line:767] INFO Ready to start.

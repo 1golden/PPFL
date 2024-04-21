@@ -1,0 +1,23 @@
+2024-04-21 20:22:45,935 fflow.py init [line:691] INFO PROCESS ID:	21908
+2024-04-21 20:22:45,935 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:22:45,935 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:22:45,936 fflow.py init [line:696] INFO TASK:			./svhn_DP_Laplace
+2024-04-21 20:22:45,936 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:22:45,936 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:22:45,950 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP.Server'>, 100 <class 'DP.Client'>
+2024-04-21 20:22:46,079 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:22:46,081 fflow.py init [line:767] INFO Ready to start.
+2024-04-21 20:22:46,308 fedbase.py _load_checkpoint [line:713] INFO Failed to load checkpoint due to max() arg is an empty sequence
+2024-04-21 20:22:46,308 fedbase.py run [line:242] INFO --------------Initial Evaluation--------------
+2024-04-21 20:22:46,308 simple_logger.py log_once [line:14] INFO Current_time:0
+2024-04-21 20:22:52,789 simple_logger.py log_once [line:28] INFO test_accuracy                 0.1110
+2024-04-21 20:22:52,790 simple_logger.py log_once [line:28] INFO test_loss                     2.3044
+2024-04-21 20:22:52,790 simple_logger.py log_once [line:28] INFO val_accuracy                  0.1125
+2024-04-21 20:22:52,790 simple_logger.py log_once [line:28] INFO mean_val_accuracy             0.1125
+2024-04-21 20:22:52,791 simple_logger.py log_once [line:28] INFO std_val_accuracy              0.0385
+2024-04-21 20:22:52,791 simple_logger.py log_once [line:28] INFO val_loss                      2.3037
+2024-04-21 20:22:52,791 simple_logger.py log_once [line:28] INFO mean_val_loss                 2.3037
+2024-04-21 20:22:52,791 simple_logger.py log_once [line:28] INFO std_val_loss                  0.0036
+2024-04-21 20:22:52,792 fedbase.py run [line:245] INFO Eval Time Cost:               6.4835s
+2024-04-21 20:23:02,922 fedbase.py run [line:253] INFO --------------Round 1--------------
+2024-04-21 20:23:02,922 simple_logger.py log_once [line:14] INFO Current_time:1

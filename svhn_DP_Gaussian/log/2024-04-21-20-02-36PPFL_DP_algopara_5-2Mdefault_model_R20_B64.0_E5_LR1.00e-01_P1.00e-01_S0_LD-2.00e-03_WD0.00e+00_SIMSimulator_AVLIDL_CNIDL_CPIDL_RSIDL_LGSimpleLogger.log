@@ -1,0 +1,12 @@
+2024-04-21 20:02:36,651 fflow.py init [line:691] INFO PROCESS ID:	18592
+2024-04-21 20:02:36,651 fflow.py init [line:692] INFO Initializing devices: cuda:0 will be used for this running.
+2024-04-21 20:02:36,651 fflow.py init [line:695] INFO BENCHMARK:	svhn_classification
+2024-04-21 20:02:36,651 fflow.py init [line:696] INFO TASK:			./svhn_DP_Gaussian
+2024-04-21 20:02:36,652 fflow.py init [line:697] INFO MODEL:		svhn_classification.model.default_model
+2024-04-21 20:02:36,654 fflow.py init [line:698] INFO ALGORITHM:	PPFL_DP
+2024-04-21 20:02:36,669 fflow.py init [line:737] INFO SCENE:		horizontal FL with 1 <class 'DP_Gaussian.Server'>, 100 <class 'DP_Gaussian.Client'>
+2024-04-21 20:02:36,676 fflow.py init [line:754] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
+2024-04-21 20:02:36,677 fflow.py init [line:767] INFO Ready to start.
+2024-04-21 20:02:36,760 fedbase.py _load_checkpoint [line:708] INFO Loading checkpoint PPFL_DP_epsilon5_Add_DP2_Mdefault_model_R20_B64.0_E5_LR1.00e-01_P1.00e-01_S0_LD-2.00e-03_WD0.00e+00_SIMSimulator_AVLIDL_CNIDL_CPIDL_RSIDL_LGSimpleLogger at round 20...
+2024-04-21 20:02:36,764 fedbase.py run [line:265] INFO =================End==================
+2024-04-21 20:02:36,764 fedbase.py run [line:266] INFO Total Time Cost:              0.0040s

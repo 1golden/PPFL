@@ -1,9 +1,0 @@
-2024-04-18 16:15:24,483 fflow.py init [line:642] INFO PROCESS ID:	2880
-2024-04-18 16:15:24,483 fflow.py init [line:643] INFO Initializing devices: cuda:0 will be used for this running.
-2024-04-18 16:15:24,483 fflow.py init [line:646] INFO BENCHMARK:	test_svhn.svhn_classification
-2024-04-18 16:15:24,483 fflow.py init [line:647] INFO TASK:			./svhn_HEDP
-2024-04-18 16:15:24,483 fflow.py init [line:648] INFO MODEL:		test_svhn.svhn_classification.model.default_model
-2024-04-18 16:15:24,483 fflow.py init [line:649] INFO ALGORITHM:	PPFL_HEDP
-2024-04-18 16:15:24,500 fflow.py init [line:688] INFO SCENE:		horizontal FL with 1 <class 'HEDP.Server'>, 100 <class 'HEDP.Client'>
-2024-04-18 16:15:24,817 fflow.py init [line:705] INFO SIMULATOR:	<class 'flgo.simulator.default_simulator.Simulator'>
-2024-04-18 16:16:43,166 fflow.py init [line:718] INFO Ready to start.
